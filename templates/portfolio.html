@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ your_name }} | Personal Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-logo">{{ your_name }}</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="hero">
+            <div class="hero-text">
+                <h1>Hi, I'm {{ your_name }}</h1>
+                <h2>A Passionate Data Analyst & Developer</h2>
+                <p>I specialize in turning data into insights and building beautiful, functional web applications. Welcome to my creative space!</p>
+                <div class="social-icons">
+                    <a href="https://github.com/Ravi-Kiran10" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/your-username" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/your-username" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+                <a href="{{ url_for('static', filename='images/your_resume.pdf') }}" class="btn" download>Download My Resume</a>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Picture">
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card">Python</div>
+                <div class="skill-card">Flask</div>
+                <div class="skill-card">SQL</div>
+                <div class="skill-card">Data Pipelining</div>
+                <div class="skill-card">Pandas & NumPy</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">HTML & CSS</div>
+                <div class="skill-card">React</div>
+            </div>
+        </section>
+        
+        <section id="experience" class="content-section">
+            <h2>Experience & Achievements</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Data Analytics Intern</h3>
+                        <p>Anand Rathi Group | Sept 2025 - Present</p>
+                        <ul>
+                            <li>Developed and maintained data pipelines using Python and SQL.</li>
+                            <li>Created interactive dashboards to visualize key performance indicators.</li>
+                            <li>Collaborated with the data science team on predictive modeling projects.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>First Place - University Hackathon</h3>
+                        <p>ACE Academy | March 2025</p>
+                        <ul>
+                            <li>Led a team of 4 to build a web application for campus event management.</li>
+                            <li>Designed the database schema and developed the Flask backend API.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="content-section">
+            <h2>Gallery & Projects</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='images/gallery1.jpg') }}" alt="Project 1">
+                    <div class="gallery-overlay"><h3>AI Plagiarism Detector</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='images/gallery2.jpg') }}" alt="Project 2">
+                    <div class="gallery-overlay"><h3>Sales Dashboard</h3></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{{ url_for('static', filename='images/gallery3.jpg') }}" alt="Project 3">
+                    <div class="gallery-overlay"><h3>Personal Finance Tracker</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2>Get In Touch</h2>
+            <p>Have a question or want to work together? Leave a message below!</p>
+            <form action="/send_message" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+             {% if request.args.get('message_sent') == 'true' %}
+                <p class="success-message">Your message has been sent successfully!</p>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 {{ your_name }}. All rights reserved.</p>
+    </footer>
+</body>
+</html>

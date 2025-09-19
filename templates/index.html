@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Access</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="access-container">
+        <h1>Welcome to My Portfolio</h1>
+        <p>For privacy, access to my portfolio is granted upon request.</p>
+        <p>Please enter your email below to request access.</p>
+        
+        <form action="/request_access" method="POST" class="access-form">
+            <input type="email" name="email" placeholder="your.email@example.com" required>
+            <button type="submit">Request Access</button>
+        </form>
+
+        {% if message %}
+        <p class="success-message">{{ message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
