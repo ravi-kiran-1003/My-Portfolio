@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 # --- Configuration ---
 # Your name and email details
-YOUR_NAME = "P Ravi Kiran"  # <<< CHANGE THIS to your name
+YOUR_NAME = "P Ravi Kiran"
 OWNER_EMAIL = os.getenv("EMAIL_ADDRESS")
 OWNER_PASSWORD = os.getenv("EMAIL_PASSWORD")
 
@@ -69,8 +69,8 @@ def request_access():
     <p>This link is unique to this request.</p>
     """
     
-    # TEMPORARILY DISABLED FOR HIRING DRIVE TO PREVENT CRASH
-      send_email(OWNER_EMAIL, email_subject, email_body)
+    # Re-enabled the email notification
+    send_email(OWNER_EMAIL, email_subject, email_body)
     
     return render_template("index.html", message="Your request has been sent! You will receive an email if it is approved.")
 
