@@ -69,7 +69,8 @@ def request_access():
     <p>This link is unique to this request.</p>
     """
     
-    send_email(OWNER_EMAIL, email_subject, email_body)
+    # TEMPORARILY DISABLED FOR HIRING DRIVE TO PREVENT CRASH
+    # send_email(OWNER_EMAIL, email_subject, email_body)
     
     return render_template("index.html", message="Your request has been sent! You will receive an email if it is approved.")
 
