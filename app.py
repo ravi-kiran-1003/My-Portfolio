@@ -70,7 +70,7 @@ def request_access():
     """
     
     # Re-enabled the email notification
-    send_email(OWNER_EMAIL, email_subject, email_body)
+    #send_email(OWNER_EMAIL, email_subject, email_body)
     
     return render_template("index.html", message="Your request has been sent! You will receive an email if it is approved.")
 
